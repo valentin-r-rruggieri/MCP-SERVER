@@ -5,36 +5,31 @@ MCP Server para interactuar con la API de GitHub.
 ## Uso
 
 ### 1. Configuración de GITHUB_TOKEN
-Crea un archivo `.env` en la raíz del proyecto (puedes usar `.env.example` como base) y agrega tu token de acceso personal de GitHub:
-```env
-GITHUB_TOKEN=tu_token_aqui
-```
+Para utilizar este servidor, necesitas un Token de Acceso Personal (PAT) de GitHub.
+1. Ve a [GitHub Settings > Developer settings > Personal access tokens > Tokens (classic)](https://github.com/settings/tokens).
+2. Genera un nuevo token con los permisos necesarios (repo, read:org, etc.).
+3. Crea un archivo `.env` en la raíz del proyecto o configura la variable de entorno:
+   ```bash
+   GITHUB_TOKEN=tu_token_aqui
+   ```
 
 ### 2. Instalación de dependencias
-Instala los paquetes necesarios ejecutando:
+Ejecuta el siguiente comando para instalar las librerías necesarias:
 ```bash
 npm install
 ```
 
 ### 3. Compilación del proyecto
-Para compilar el código TypeScript a JavaScript:
+Para compilar el código TypeScript a JavaScript, usa:
 ```bash
 npm run build
 ```
 
 ### 4. Uso desde Antigravity
-Para integrar este servidor en Antigravity, añade la configuración correspondiente en tu archivo de configuración de MCP apuntando al archivo compilado:
-
-```json
-{
-  "mcpServers": {
-    "github-mcp": {
-      "command": "node",
-      "args": ["PATH_TO_PROJECT/dist/index.js"],
-      "env": {
-        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
-      }
-    }
-  }
-}
-```
+Para integrar este MCP Server en Antigravity:
+1. Abre la configuración de Antigravity.
+2. Agrega una nueva configuración de MCP Server apuntando al archivo compilado:
+   - Command: `node`
+   - Args: `[path/to/MCP-SERVER/dist/index.js]`
+   - Env: `GITHUB_TOKEN=tu_token_aqui`
+3. Una vez configurado, Antigravity podrá usar las herramientas de GitHub directamente.
