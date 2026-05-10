@@ -1,1 +1,0 @@
-# MCP Demo Actualizado desde Antigravity usando el servidor MCP de GitHub.
